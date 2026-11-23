@@ -16,10 +16,10 @@
 
     <dependencies>
 
-        <!-- 通用工具 -->
+        <!-- 核心框架 -->
         <dependency>
             <groupId>com.github.haihuoshu</groupId>
-            <artifactId>ruoyi-common</artifactId>
+            <artifactId>ruoyi-framework</artifactId>
         </dependency>
 
     </dependencies>
