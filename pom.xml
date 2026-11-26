@@ -29,11 +29,11 @@
 
     <properties>
         <revision>1.0.0</revision>
+        <mybatis-flex.version>1.11.8</mybatis-flex.version>
         <druid.version>1.2.28</druid.version>
         <yauaa.version>7.32.0</yauaa.version>
         <swagger.version>3.0.0</swagger.version>
         <kaptcha.version>2.3.3</kaptcha.version>
-        <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
         <fastjson.version>2.0.66</fastjson.version>
         <oshi.version>7.7.3</oshi.version>
         <commons.io.version>2.22.0</commons.io.version>
@@ -44,6 +44,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- MyBatis 增强框架 -->
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-spring-boot-starter</artifactId>
+                <version>${mybatis-flex.version}</version>
+            </dependency>
 
             <!-- 阿里数据库连接池 -->
             <dependency>
