@@ -29,6 +29,7 @@
 
     <properties>
         <revision>1.0.0</revision>
+        <knife4j.version>4.5.0</knife4j.version>
         <mybatis-flex.version>1.11.8</mybatis-flex.version>
         <druid.version>1.2.28</druid.version>
         <yauaa.version>7.32.0</yauaa.version>
@@ -44,6 +45,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Swagger 增强框架 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
             <!-- MyBatis 增强框架 -->
             <dependency>
                 <groupId>com.mybatis-flex</groupId>
