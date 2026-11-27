@@ -31,7 +31,7 @@
         <!-- 通用工具 -->
         <dependency>
             <groupId>com.github.haihuoshu</groupId>
-            <artifactId>ruoyi-common</artifactId>
+            <artifactId>ruoyi-framework</artifactId>
         </dependency>
 
     </dependencies>

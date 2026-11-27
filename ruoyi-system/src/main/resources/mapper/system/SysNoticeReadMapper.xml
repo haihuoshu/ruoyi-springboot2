@@ -3,8 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.SysNoticeReadMapper">
-
-    <resultMap type="SysNoticeRead" id="SysNoticeReadResult">
+    <resultMap type="com.ruoyi.system.domain.SysNoticeRead" id="SysNoticeReadResult">
         <id     property="readId"   column="read_id"     />
         <result property="noticeId" column="notice_id"   />
         <result property="userId"   column="user_id"     />
@@ -12,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <!-- 新增已读记录 -->
-    <insert id="insertNoticeRead" parameterType="SysNoticeRead">
+    <insert id="insertNoticeRead" parameterType="com.ruoyi.system.domain.SysNoticeRead">
         insert ignore into sys_notice_read (notice_id, user_id, read_time)
         values (#{noticeId}, #{userId}, sysdate())
     </insert>
@@ -29,18 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <!-- 查询带已读状态的公告列表（直接在SQL中限制条数） -->
-    <select id="selectNoticeListWithReadStatus" resultType="SysNotice">
-        select
-            n.notice_id    as noticeId,
-            n.notice_title as noticeTitle,
-            n.notice_type  as noticeType,
-            n.status,
-            n.create_by    as createBy,
-            n.create_time  as createTime,
-            case when r.notice_id is not null then true else false end as isRead
+    <select id="selectNoticeListWithReadStatus" resultType="com.ruoyi.system.domain.SysNotice">
+        select n.notice_id                              as noticeId,
+               n.notice_title                           as noticeTitle,
+               n.notice_type                            as noticeType,
+               n.status,
+               n.create_by                              as createBy,
+               n.create_time                            as createTime,
+               IF(r.notice_id IS NOT NULL, TRUE, FALSE) as isRead
         from sys_notice n
-        left join sys_notice_read r
-            on r.notice_id = n.notice_id and r.user_id = #{userId}
+                 left join sys_notice_read r
+                           on r.notice_id = n.notice_id and r.user_id = #{userId}
         where n.status = '0'
         order by n.notice_id desc
         limit #{limit}

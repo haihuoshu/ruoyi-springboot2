@@ -25,7 +25,7 @@
         <!-- 通用工具 -->
         <dependency>
             <groupId>com.github.haihuoshu</groupId>
-            <artifactId>ruoyi-common</artifactId>
+            <artifactId>ruoyi-framework</artifactId>
         </dependency>
 
         <!-- 阿里数据库连接池 -->
